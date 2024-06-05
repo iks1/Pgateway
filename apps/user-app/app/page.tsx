@@ -1,11 +1,12 @@
-import { PrismaClient } from "@repo/db/";
+import { PrismaClient } from "@repo/db";
 const client = new PrismaClient();
+import Test from "./test";
 
 export default function Page(): JSX.Element {
   return (
     <>
       <div className="text-xl">
-        sumimmasen!
+        <Test/>
       </div>
     </>
   );
