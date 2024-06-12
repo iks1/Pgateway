@@ -1,3 +1,5 @@
+<img src="/docs/architecture.png" alt="architecture image"/>
+
 # Turborepo starter
 
 This is an official starter Turborepo.
