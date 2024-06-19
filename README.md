@@ -14,14 +14,14 @@ The project contains includes the following packages/apps:
 ### Apps and Packages
 
 - `user-app`: a [Next.js](https://nextjs.org/) app that is the main application handing the UI and transaction management.
-- `webhook`: a [Node.js]() app Written in `TypeScript` and `express` for handing Transaction Verification from bank
+- `webhook-server`: a [Node.js]() app Written in `TypeScript` and `express` for handing Transaction Verification from bank
 - `@repo/ui`: a React component library that is used in `user-app` and could be used in another `Next.js` application
-- `@repo/db`: a prisma configuation for database that is used in `user-app` and `webhook`
+- `@repo/db`: a prisma configuation for database that is used in `user-app` and `webhook-server`
 - `@repo/store`: a configuration for `react-recoil` state management library
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 ### Tech Stack of the Project
-
+- Turborepo (for package and app management)
 - NextJs (app router/ server side rendering)
 - NodeJs (express for Rest Api)
 - TypeScript
