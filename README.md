@@ -1,83 +1,43 @@
+
+## About the project
+
+I tried to explore how a `payment wallets/ digital wallets` work, I also tried to see what are the challenges that one might face while creating an application that involves transactions of money or sensitive information in general.
+
+One significant learning experience involved database operations.  I discovered that in MongoDB, when an operation is in progress on a row and another query manipulates the same row concurrently, the transaction is rolled back to maintain data integrity. But in PostgreSQL it does not, we have to Lock the row to ensure that we do not get interrupted by any other query. This was one such learning and I discovered many other things as well.
+
+This is the architecture for this project:
+
 <img src="/docs/architecture.png" alt="architecture image"/>
 
-# Turborepo starter
-
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
+The project contains includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `user-app`: a [Next.js](https://nextjs.org/) app that is the main application handing the UI and transaction management.
+- `webhook`: a [Node.js]() app in Written in `TypeScript` and `express` for handing Transaction Verification from bank
+- `@repo/ui`: a React component library that is used in `user-app` and could be used in another `Next.js` application
+- `@repo/db`: a prisma configuation for database that is used in `user-app` and `webhook`
+- `@repo/store`: a configuration for `react-recoil` state management library
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Tech Stack of the Project
 
-### Utilities
+- NextJs
+- NodeJs
+- TypeScript
+- Tailwind CSS
+- PostgreSQL
+- Prisma ORM 
+- NextJs Authentication
+- SQL Transaction and Locks
 
-This Turborepo has some additional tools already setup for you:
+### Features Available
+- User authentication
+- on Ramp Transaction : putting money into your wallet from your bank account
+- Web Hook server : A separate service other than main backend to handle the Payment verification service
+- Atomic transactions 
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+### Future Implementations
+- Off Ramp Transaction: Due to its critical nature, I am considering implementing this feature on a separate server. Alternatively, it might be integrated into the existing webhook service.
+- Banking API: Currently, I simulate the banking API using 'Postman`. It would be beneficial to have a public or open-source banking simulation available for such projects. I may explore creating one.
+- Competing UI: will see about that :)
