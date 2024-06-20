@@ -13,7 +13,7 @@ The project contains includes the following packages/apps:
 
 ### Apps and Packages
 
-- `user-app`: a [Next.js](https://nextjs.org/) app that is the main application handing the UI and transaction management.
+- `user-app`: a [Next.js](https://nextjs.org/) app that is the main application handing the UI, routing, transacton management, authentication.
 - `webhook-server`: a [Node.js]() app Written in `TypeScript` and `express` for handing Transaction Verification from bank
 - `@repo/ui`: a React component library that is used in `user-app` and could be used in another `Next.js` application
 - `@repo/db`: a prisma configuation for database that is used in `user-app` and `webhook-server`
